@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class BinarySearchTree {
     Node root;
 
@@ -40,6 +42,16 @@ public class BinarySearchTree {
         }
     }
 
+    private int minValue(Node root) {
+        int minValue = root.key;
+        while (root.left != null) {
+            minValue = root.left.key;
+            root = root.left;
+        }
+        return minValue;
+    }
+
+
     void inOrder() {
         inOrderRec(root);
     }
@@ -49,6 +61,37 @@ public class BinarySearchTree {
             inOrderRec(root.left);
             System.out.print(root.key + " ");
             inOrderRec(root.right);
+        }
+    }
+
+    public Node delete(Node root, int key) {
+        if (root == null) {
+            return root;
+        }
+
+        if (key < root.key) {
+            root.left = delete(root.left, key);
+        } else if (key > root.key) {
+            root.right = delete(root.right, key);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+
+            root.key = minValue(root.right);
+            root.right = delete(root.right, root.key);
+        }
+
+        return root;
+    }
+
+    public void deleteRandomNodes(int count) {
+        Random random = new Random();
+        for (int i = 0; i < count; i++) {
+            int keyToDelete = random.nextInt(90000) + 10000; // Assuming key range is 10000 to 100000
+            root = delete(root, keyToDelete);
         }
     }
 

@@ -12,6 +12,19 @@ public class Main {
         //AVL1000000();
         //AVL10000000();
         //AVL100000000();
+        //DeleteRandomMembersFromBST1000000(10000);
+        //DeleteRandomMembersFromBST1000000(100000);
+        //DeleteRandomMembersFromAVL1000000(10000);
+        //DeleteRandomMembersFromAVL1000000(100000);
+        //LinkedList(10000);
+        //LinkedList(100000);
+        //LinkedList(1000000);
+        //LinkedList(10000000);
+        //LinkedList(100000000);
+        //DeleteRandomMembersFromLinkedList1000000(10000);
+        //DeleteRandomMembersFromLinkedList1000000(100000);
+
+
     }
 
     public static void AVL10000() {
@@ -20,7 +33,7 @@ public class Main {
         long startTime, endTime;
         startTime = System.currentTimeMillis();
 
-        // Task 1: Insert random numbers into AVL Tree
+        //Insert random numbers into AVL Tree
         int min = -1000000000;
         int max = 1000000000;
 
@@ -29,7 +42,7 @@ public class Main {
             avlTree.insert(randomNumber);
         }
 
-        // Task 2: Search for specific numbers in AVL Tree and measure execution time
+        //Search for specific numbers in AVL Tree and measure execution time
         int numberToSearch = random.nextInt((max - min) + 1) + min;
         boolean found = avlTree.search(numberToSearch);
         endTime = System.currentTimeMillis();
@@ -40,8 +53,8 @@ public class Main {
         AVLTree avlTree = new AVLTree();
         Random random = new Random();
         long startTime, endTime;
-        startTime = System.currentTimeMillis();
 
+        startTime = System.currentTimeMillis();
         // Task 1: Insert random numbers into AVL Tree
         int min = -1000000000;
         int max = 1000000000;
@@ -219,4 +232,71 @@ public class Main {
         System.out.println(time + " ms ");
     }
 
+    public static void DeleteRandomMembersFromBST1000000(int count) {
+        BinarySearchTree bst = new BinarySearchTree();
+        Random random = new Random();
+        // Generate and insert random numbers into the BST
+        int min = -1000000000;
+        int max = 1000000000;
+        for (int i = 0; i < 1000000; i++) {
+            int randomNumber = random.nextInt((max - min) + 1) + min;
+            bst.insert(randomNumber);
+        }
+        long startTimeBST = System.currentTimeMillis();
+        bst.deleteRandomNodes(count);
+        long endTimeBST = System.currentTimeMillis();
+        System.out.println("BST Deletion Execution Time: " + (endTimeBST - startTimeBST) + " ms");
+    }
+
+    public static void DeleteRandomMembersFromAVL1000000(int count) {
+        AVLTree avlTree = new AVLTree();
+        Random random = new Random();
+        // Generate and insert random numbers into the BST
+        int min = -1000000000;
+        int max = 1000000000;
+        for (int i = 0; i < 1000000; i++) {
+            int randomNumber = random.nextInt((max - min) + 1) + min;
+            avlTree.insert(randomNumber);
+        }
+        long startTimeAVL = System.currentTimeMillis();
+        avlTree.deleteRandomNodes(count);
+        long endTimeAVL = System.currentTimeMillis();
+        System.out.println("AVL Tree Deletion Execution Time: " + (endTimeAVL - startTimeAVL) + " ms");
+    }
+
+    public static void LinkedList(int size) {
+        long startTime = System.currentTimeMillis();
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        Random random = new Random();
+
+        int min = -1000000000;
+        int max = 1000000000;
+
+        // Insert random numbers into the linked list
+        for (int i = 0; i < size; i++) {
+            int randomNumber = random.nextInt((max - min) + 1) + min;
+            linkedList.insertAtEnd(randomNumber);
+        }
+        int numberToSearch = random.nextInt((max - min) + 1) + min;
+        boolean isFound = linkedList.search(numberToSearch);
+        long endTime = System.currentTimeMillis();
+        System.out.println("LinkedList: \n Number " + numberToSearch + " found: " + isFound + ". Execution time: " + (endTime - startTime) + " ms");
+    }
+
+    public static void DeleteRandomMembersFromLinkedList1000000(int count) {
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        Random random = new Random();
+        // Generate and insert random numbers into the BST
+        int min = -1000000000;
+        int max = 1000000000;
+        for (int i = 0; i < 1000000; i++) {
+            int randomNumber = random.nextInt((max - min) + 1) + min;
+            linkedList.insertAtEnd(randomNumber);
+        }
+        long startTime = System.currentTimeMillis();
+        linkedList.deleteRandomNodes(count);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Linked List Deletion Execution Time: " + (endTime - startTime) + " ms");
+
+    }
 }

@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class SinglyLinkedList {
     private Node head;
     private Node tail;
@@ -28,6 +30,73 @@ public class SinglyLinkedList {
             tail = newNode;
         }
     }
+
+    private int size() {
+        int count = 0;
+        Node current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
+
+    public boolean search(int key) {
+        Node current = head;
+        while (current != null) {
+            if (current.data == key) {
+                return true;  // Key found
+            }
+            current = current.next;
+        }
+        return false;  // Key not found
+    }
+
+    public void deleteRandomNodes(int count) {
+        if (count >= size()) {
+            // If count is greater than or equal to the size of the list, delete all nodes
+            head = null;
+            tail = null;
+        } else {
+            Random random = new Random();
+            for (int i = 0; i < count; i++) {
+                // Generate a random index to delete a node
+                int randomIndex = random.nextInt(size() - 1);
+                deleteNodeAtIndex(randomIndex);
+            }
+        }
+    }
+
+    private void deleteNodeAtIndex(int index) {
+        if (index < 0 || index >= size()) {
+            // Invalid index
+            return;
+        }
+
+        if (index == 0) {
+            // If deleting the head, move the head to the next node
+            head = head.next;
+            if (head == null) {
+                // If the list becomes empty, update the tail to null
+                tail = null;
+            }
+        } else {
+            // Traverse to the node before the one to be deleted
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+
+            // Update the next reference to skip the node to be deleted
+            current.next = current.next.next;
+
+            // If the deleted node was the tail, update the tail
+            if (current.next == null) {
+                tail = current;
+            }
+        }
+    }
+
 
     public void display() {
         Node current = head;
