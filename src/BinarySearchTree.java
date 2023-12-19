@@ -1,7 +1,17 @@
 import java.util.Random;
 
 public class BinarySearchTree {
-    Node root;
+    private static class Node {
+        int key;
+        Node left, right;
+
+        Node(int key) {
+            this.key = key;
+            this.left = this.right = null;
+        }
+    }
+
+    private Node root;
 
     BinarySearchTree() {
         root = null;

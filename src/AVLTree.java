@@ -1,7 +1,19 @@
 import java.util.Random;
 
 public class AVLTree {
-    Node1 root;
+    private static class Node1 {
+        int key;
+        Node1 left, right;
+        int height;
+
+        Node1(int key) {
+            this.key = key;
+            this.left = this.right = null;
+            this.height = 1;
+        }
+    }
+
+    private Node1 root;
 
     AVLTree() {
         root = null;
