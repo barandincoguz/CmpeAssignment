@@ -2,16 +2,16 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        //BST10000();
-        //BST100000();
-        //BST1000000();
-        //BST10000000();
-        //BST100000000();
-        //AVL10000();
-        //AVL100000();
-        //AVL1000000();
-        //AVL10000000();
-        //AVL100000000();
+        //BST(10000);
+        //BST(100000);
+        //BST(1000000);
+        //BST(10000000);
+        //BST(100000000);
+        //AVL(10000);
+        //AVL(100000);
+        //AVL(1000000);
+        //AVL(10000000);
+        //AVL(100000000);
         //DeleteRandomMembersFromBST1000000(10000);
         //DeleteRandomMembersFromBST1000000(100000);
         //DeleteRandomMembersFromAVL1000000(10000);
@@ -27,209 +27,65 @@ public class Main {
 
     }
 
-    public static void AVL10000() {
+    public static void AVL(int count) {
         AVLTree avlTree = new AVLTree();
         Random random = new Random();
         long startTime, endTime;
-        startTime = System.currentTimeMillis();
 
         //Insert random numbers into AVL Tree
         int min = -1000000000;
         int max = 1000000000;
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < count; i++) {
             int randomNumber = random.nextInt((max - min) + 1) + min;
             avlTree.insert(randomNumber);
         }
 
         //Search for specific numbers in AVL Tree and measure execution time
+        startTime = System.nanoTime();
         int numberToSearch = random.nextInt((max - min) + 1) + min;
         boolean found = avlTree.search(numberToSearch);
-        endTime = System.currentTimeMillis();
-        System.out.println("AVL Tree: \n Number " + numberToSearch + " found: " + found + ". Execution time: " + (endTime - startTime) + " ms");
+        endTime = System.nanoTime();
+        System.out.println("AVL Tree: \n Number " + numberToSearch + " found: " + found + ". Execution time: " + (endTime - startTime) + " ns");
     }
 
-    public static void AVL100000() {
-        AVLTree avlTree = new AVLTree();
-        Random random = new Random();
-        long startTime, endTime;
 
-        startTime = System.currentTimeMillis();
-        // Task 1: Insert random numbers into AVL Tree
-        int min = -1000000000;
-        int max = 1000000000;
-
-        for (int i = 0; i < 100000; i++) {
-            int randomNumber = random.nextInt((max - min) + 1) + min;
-            avlTree.insert(randomNumber);
-        }
-
-        // Task 2: Search for specific numbers in AVL Tree and measure execution time
-        int numberToSearch = random.nextInt((max - min) + 1) + min;
-        boolean found = avlTree.search(numberToSearch);
-        endTime = System.currentTimeMillis();
-        System.out.println("AVL Tree: \n Number " + numberToSearch + " found: " + found + ". Execution time: " + (endTime - startTime) + " ms");
-    }
-
-    public static void AVL1000000() {
-        AVLTree avlTree = new AVLTree();
-        Random random = new Random();
-        long startTime, endTime;
-        startTime = System.currentTimeMillis();
-
-        // Task 1: Insert random numbers into AVL Tree
-        int min = -1000000000;
-        int max = 1000000000;
-
-        for (int i = 0; i < 1000000; i++) {
-            int randomNumber = random.nextInt((max - min) + 1) + min;
-            avlTree.insert(randomNumber);
-        }
-
-        // Task 2: Search for specific numbers in AVL Tree and measure execution time
-        int numberToSearch = random.nextInt((max - min) + 1) + min;
-        boolean found = avlTree.search(numberToSearch);
-        endTime = System.currentTimeMillis();
-        System.out.println("AVL Tree: \n Number " + numberToSearch + " found: " + found + ". Execution time: " + (endTime - startTime) + " ms");
-    }
-
-    public static void AVL10000000() {
-        AVLTree avlTree = new AVLTree();
-        Random random = new Random();
-        long startTime, endTime;
-        startTime = System.currentTimeMillis();
-
-        // Task 1: Insert random numbers into AVL Tree
-        int min = -1000000000;
-        int max = 1000000000;
-
-        for (int i = 0; i < 10000000; i++) {
-            int randomNumber = random.nextInt((max - min) + 1) + min;
-            avlTree.insert(randomNumber);
-        }
-
-        // Task 2: Search for specific numbers in AVL Tree and measure execution time
-        int numberToSearch = random.nextInt((max - min) + 1) + min;
-        boolean found = avlTree.search(numberToSearch);
-        endTime = System.currentTimeMillis();
-        System.out.println("AVL Tree: \n Number " + numberToSearch + " found: " + found + ". Execution time: " + (endTime - startTime) + " ms");
-    }
-
-    public static void AVL100000000() {
-        AVLTree avlTree = new AVLTree();
-        Random random = new Random();
-        long startTime, endTime;
-        startTime = System.currentTimeMillis();
-
-        // Task 1: Insert random numbers into AVL Tree
-        int min = -1000000000;
-        int max = 1000000000;
-
-        for (int i = 0; i < 100000000; i++) {
-            int randomNumber = random.nextInt((max - min) + 1) + min;
-            avlTree.insert(randomNumber);
-        }
-
-        // Task 2: Search for specific numbers in AVL Tree and measure execution time
-        int numberToSearch = random.nextInt((max - min) + 1) + min;
-        boolean found = avlTree.search(numberToSearch);
-        endTime = System.currentTimeMillis();
-        System.out.println("AVL Tree: \n Number " + numberToSearch + " found: " + found + ". Execution time: " + (endTime - startTime) + " ms");
-    }
-
-    public static void BST10000() {
-        long start = System.currentTimeMillis();
+    public static void BST(int count) {
         BinarySearchTree bst1 = new BinarySearchTree();
         Random random = new Random();
         // Generate and insert random numbers into the BST
         int min = -1000000000;
         int max = 1000000000;
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < count; i++) {
             int randomNumber = random.nextInt((max - min) + 1) + min;
             bst1.insert(randomNumber);
         }
+        long start = System.nanoTime();
         int numberToSearch = random.nextInt((max - min) + 1) + min;
         boolean found = bst1.search(numberToSearch);
         System.out.println("Number " + numberToSearch + " found: " + found);
-        long finish = System.currentTimeMillis();
+        long finish = System.nanoTime();
         long time = finish - start;
-        System.out.println(time + " ms ");
+        System.out.println(time + " ns ");
     }
 
-    public static void BST100000() {
-        long start = System.currentTimeMillis();
-        BinarySearchTree bst1 = new BinarySearchTree();
+    public static void LinkedList(int size) {
+        SinglyLinkedList linkedList = new SinglyLinkedList();
         Random random = new Random();
-        // Generate and insert random numbers into the BST
-        int min = -1000000000;
-        int max = 1000000000;
-        for (int i = 0; i < 100000; i++) {
-            int randomNumber = random.nextInt((max - min) + 1) + min;
-            bst1.insert(randomNumber);
-        }
-        int numberToSearch = random.nextInt((max - min) + 1) + min;
-        boolean found = bst1.search(numberToSearch);
-        System.out.println("Number " + numberToSearch + " found: " + found);
-        long finish = System.currentTimeMillis();
-        long time = finish - start;
-        System.out.println(time + " ms ");
-    }
 
-    public static void BST1000000() {
-        long start = System.currentTimeMillis();
-        BinarySearchTree bst1 = new BinarySearchTree();
-        Random random = new Random();
-        // Generate and insert random numbers into the BST
         int min = -1000000000;
         int max = 1000000000;
-        for (int i = 0; i < 1000000; i++) {
-            int randomNumber = random.nextInt((max - min) + 1) + min;
-            bst1.insert(randomNumber);
-        }
-        int numberToSearch = random.nextInt((max - min) + 1) + min;
-        boolean found = bst1.search(numberToSearch);
-        System.out.println("Number " + numberToSearch + " found: " + found);
-        long finish = System.currentTimeMillis();
-        long time = finish - start;
-        System.out.println(time + " ms ");
-    }
 
-    public static void BST10000000() {
-        long start = System.currentTimeMillis();
-        BinarySearchTree bst1 = new BinarySearchTree();
-        Random random = new Random();
-        // Generate and insert random numbers into the BST
-        int min = -1000000000;
-        int max = 1000000000;
-        for (int i = 0; i < 10000000; i++) {
+        // Insert random numbers into the linked list
+        for (int i = 0; i < size; i++) {
             int randomNumber = random.nextInt((max - min) + 1) + min;
-            bst1.insert(randomNumber);
+            linkedList.insertAtEnd(randomNumber);
         }
+        long startTime = System.nanoTime();
         int numberToSearch = random.nextInt((max - min) + 1) + min;
-        boolean found = bst1.search(numberToSearch);
-        System.out.println("Number " + numberToSearch + " found: " + found);
-        long finish = System.currentTimeMillis();
-        long time = finish - start;
-        System.out.println(time + " ms ");
-    }
-
-    public static void BST100000000() {
-        long start = System.currentTimeMillis();
-        BinarySearchTree bst1 = new BinarySearchTree();
-        Random random = new Random();
-        // Generate and insert random numbers into the BST
-        int min = -1000000000;
-        int max = 1000000000;
-        for (int i = 0; i < 100000000; i++) {
-            int randomNumber = random.nextInt((max - min) + 1) + min;
-            bst1.insert(randomNumber);
-        }
-        int numberToSearch = random.nextInt((max - min) + 1) + min;
-        boolean found = bst1.search(numberToSearch);
-        System.out.println("Number " + numberToSearch + " found: " + found);
-        long finish = System.currentTimeMillis();
-        long time = finish - start;
-        System.out.println(time + " ms ");
+        boolean isFound = linkedList.search(numberToSearch);
+        long endTime = System.nanoTime();
+        System.out.println("LinkedList: \n Number " + numberToSearch + " found: " + isFound + ". Execution time: " + (endTime - startTime) + " ns");
     }
 
     public static void DeleteRandomMembersFromBST1000000(int count) {
@@ -242,10 +98,10 @@ public class Main {
             int randomNumber = random.nextInt((max - min) + 1) + min;
             bst.insert(randomNumber);
         }
-        long startTimeBST = System.currentTimeMillis();
+        long startTimeBST = System.nanoTime();
         bst.deleteRandomNodes(count);
-        long endTimeBST = System.currentTimeMillis();
-        System.out.println("BST Deletion Execution Time: " + (endTimeBST - startTimeBST) + " ms");
+        long endTimeBST = System.nanoTime();
+        System.out.println("BST Deletion Execution Time: " + (endTimeBST - startTimeBST) + " ns");
     }
 
     public static void DeleteRandomMembersFromAVL1000000(int count) {
@@ -258,30 +114,12 @@ public class Main {
             int randomNumber = random.nextInt((max - min) + 1) + min;
             avlTree.insert(randomNumber);
         }
-        long startTimeAVL = System.currentTimeMillis();
+        long startTimeAVL = System.nanoTime();
         avlTree.deleteRandomNodes(count);
-        long endTimeAVL = System.currentTimeMillis();
-        System.out.println("AVL Tree Deletion Execution Time: " + (endTimeAVL - startTimeAVL) + " ms");
+        long endTimeAVL = System.nanoTime();
+        System.out.println("AVL Tree Deletion Execution Time: " + (endTimeAVL - startTimeAVL) + " ns");
     }
 
-    public static void LinkedList(int size) {
-        long startTime = System.currentTimeMillis();
-        SinglyLinkedList linkedList = new SinglyLinkedList();
-        Random random = new Random();
-
-        int min = -1000000000;
-        int max = 1000000000;
-
-        // Insert random numbers into the linked list
-        for (int i = 0; i < size; i++) {
-            int randomNumber = random.nextInt((max - min) + 1) + min;
-            linkedList.insertAtEnd(randomNumber);
-        }
-        int numberToSearch = random.nextInt((max - min) + 1) + min;
-        boolean isFound = linkedList.search(numberToSearch);
-        long endTime = System.currentTimeMillis();
-        System.out.println("LinkedList: \n Number " + numberToSearch + " found: " + isFound + ". Execution time: " + (endTime - startTime) + " ms");
-    }
 
     public static void DeleteRandomMembersFromLinkedList1000000(int count) {
         SinglyLinkedList linkedList = new SinglyLinkedList();
@@ -293,10 +131,10 @@ public class Main {
             int randomNumber = random.nextInt((max - min) + 1) + min;
             linkedList.insertAtEnd(randomNumber);
         }
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         linkedList.deleteRandomNodes(count);
-        long endTime = System.currentTimeMillis();
-        System.out.println("Linked List Deletion Execution Time: " + (endTime - startTime) + " ms");
+        long endTime = System.nanoTime();
+        System.out.println("Linked List Deletion Execution Time: " + (endTime - startTime) + " ns");
 
     }
 }
